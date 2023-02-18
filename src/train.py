@@ -17,7 +17,7 @@ from visualization_helper import visualization_helper
 import warnings
 warnings.filterwarnings("ignore")
 
-data_df=pd.read_csv("data.csv")
+data_df=pd.read_csv("../data.csv")
 data_df.drop(["Unnamed: 32",'id'],inplace=True,axis=1)
 
 data_df=data_df.rename(columns={"diagnosis":"target"})

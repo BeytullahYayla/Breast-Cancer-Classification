@@ -26,11 +26,11 @@ class visualization_helper():
         
         prediction=self.model.predict(np.c_[xx.ravel(),yy.ravel()])
         
-        prediction.reshape(xx.shape)
+        prediction=prediction.reshape(xx.shape)
         plt.figure()
         plt.pcolormesh(xx,yy,prediction,cmap=self.cmap_light)
         
-        plt.scatter(pca_data[:,0],pca_data[:,1],c=y,cmap=self.cmap_bold,edgecolor="k",s=20)
+        plt.scatter(pca_data[:,0],pca_data[:,1],c=self.y,cmap=self.cmap_bold,edgecolor="k",s=20)
         
         plt.xlim(xx.min(),xx.max())
         plt.ylim(yy.min(),yy.max())
