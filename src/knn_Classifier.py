@@ -8,6 +8,7 @@ import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.model_selection import train_test_split,GridSearchCV
+
 class Knn_Classifier:
     def __init__(self,n_neighbors,X_train,y_train,X_test,y_test):
         self.n_neighbors=n_neighbors

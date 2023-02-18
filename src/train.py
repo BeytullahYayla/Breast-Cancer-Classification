@@ -10,8 +10,9 @@ from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.neighbors import NeighborhoodComponentsAnalysis,LocalOutlierFactor
 from sklearn.decomposition import PCA
-from Knn_Classifier import Knn_Classifier
+from knn_Classifier import Knn_Classifier
 from visualization_helper import visualization_helper
+import pickle
 
 #warnings
 import warnings
@@ -184,4 +185,38 @@ model.fit(X_train_pca, y_train_pca)
 vh=visualization_helper(model=model, y=y)
 vh.visualize_pca(X_reduced_pca, 0.05)
 
+preds_test=model.predict(X_test_pca)
+print(accuracy_score(y_test_pca, preds_test))#0.95 test accuracy score
 
+preds_train=model.predict(X_train_pca)
+print(accuracy_score(y_train_pca, preds_train))#0.94 test accuracy score
+
+
+#%%Neighborhood Component Analysis
+
+nca=NeighborhoodComponentsAnalysis(n_components=2)
+nca.fit(X_scaled, y)
+X_reduced_nca=nca.transform(X_scaled)
+nca_data=pd.DataFrame(X_reduced_nca,columns=["p1","p2"])
+nca_data["target"]=y
+
+sns.scatterplot(x="p1",y="p2",hue="target", data=nca_data)
+plt.title("NCA: P1 vs P2")
+
+X_train_nca,X_test_nca,y_train_nca,y_test_nca=train_test_split(X_reduced_nca,y,test_size=0.3,random_state=42)
+
+model=KNeighborsClassifier(n_neighbors=2)
+model.fit(X_train_nca, y_train_nca)
+vh=visualization_helper(model=model, y=y)
+vh.visualize_pca(X_reduced_nca, 0.2)
+
+preds_test=model.predict(X_test_nca)
+print(accuracy_score(y_test_nca, preds_test))#0.98 test accuracy score
+
+preds_train=model.predict(X_train_nca)
+print(accuracy_score(y_train_nca, preds_train))#0.98 test accuracy score
+
+
+#%%Save Best Model
+
+pickle.dump(model, open("best.sav",'wb'))
