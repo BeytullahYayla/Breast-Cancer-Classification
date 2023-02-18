@@ -7,7 +7,8 @@ Created on Sat Feb 18 14:14:42 2023
 from matplotlib.colors import ListedColormap
 import numpy as np
 import pandas as pd
-from matplotlib.pyplot import plt
+import matplotlib.pyplot as plt
+
 
 class visualization_helper():
     def __init__(self,model,y):
@@ -18,8 +19,8 @@ class visualization_helper():
     
     
     def visualize_pca(self,pca_data,step_size):
-        x_min,x_max=pca_data[:,0].min()-1,pca_dta[:,0].max()+1
-        y_min,y_max=pca_data[:,1].min()-1,pca_dta[:,1].max()+1
+        x_min,x_max=pca_data[:,0].min()-1,pca_data[:,0].max()+1
+        y_min,y_max=pca_data[:,1].min()-1,pca_data[:,1].max()+1
         
         xx,yy=np.meshgrid(np.arange(x_min,x_max,step_size),np.arange(y_min,y_max,step_size))
         

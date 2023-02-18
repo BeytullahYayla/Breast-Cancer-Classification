@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.colors import ListedColormap
-
+from sklearn.neighbors import KNeighborsClassifier
 from  sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import accuracy_score,confusion_matrix
@@ -157,7 +157,31 @@ knn=Knn_Classifier(n_neighbors=2, X_train=X_train, y_train=y_train, X_test=X_tes
 train_acc,test_acc=knn.get_scores_with_best_params()
 
 
+
+
+
+
+
+#%% Principal Component Analysis
+
 scaler=StandardScaler()
-X_scaled=scaler.fit_transform(X, fit_params)
+X_scaled=scaler.fit_transform(X)
+
+pca=PCA(n_components=2)
+pca.fit(X_scaled)
+
+X_reduced_pca=pca.transform(X_scaled)
+pca_data=pd.DataFrame(X_reduced_pca,columns=["p1","p2"])
+pca_data["target"]=y
+
+sns.scatterplot(x="p1",y="p2",hue="target",data=pca_data)
+plt.title("PCA: P1 vs P2")
+
+X_train_pca,X_test_pca,y_train_pca,y_test_pca=train_test_split(X_reduced_pca,y,test_size=0.3,random_state=42)
+
+model=KNeighborsClassifier(n_neighbors=2)
+model.fit(X_train_pca, y_train_pca)
+vh=visualization_helper(model=model, y=y)
+vh.visualize_pca(X_reduced_pca, 0.05)
 
 
