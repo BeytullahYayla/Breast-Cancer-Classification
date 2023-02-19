@@ -19,6 +19,10 @@ class Knn_Classifier:
         self.model=KNeighborsClassifier(n_neighbors=self.n_neighbors)
         self.model.fit(self.X_train, self.y_train)
         
+    def get_model(self):
+        return self.model
+        
+        
         
         
     def get_test_acc(self):

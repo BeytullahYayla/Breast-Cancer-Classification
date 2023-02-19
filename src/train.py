@@ -14,6 +14,7 @@ from knn_Classifier import Knn_Classifier
 from visualization_helper import visualization_helper
 import pickle
 
+from input_data import input_data
 #warnings
 import warnings
 warnings.filterwarnings("ignore")
@@ -21,7 +22,10 @@ warnings.filterwarnings("ignore")
 data_df=pd.read_csv("../data.csv")
 data_df.drop(["Unnamed: 32",'id'],inplace=True,axis=1)
 
-data_df=data_df.rename(columns={"diagnosis":"target"})
+data_df=data_df.rename(columns={"diagnosis":"target","concave points_worst":"concave_points_worst","concave points_mean":"concave_points_mean",
+                                "concave points_se":"concave_points_se"
+                                
+                                })
 
 sns.countplot(data_df["target"])
 
@@ -123,6 +127,7 @@ plt.show()
 test_size=0.3
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=test_size,random_state=42)
 
+print(type(X_train))
 
 
 X_train_description=X_train.describe()
@@ -156,7 +161,8 @@ plt.show()
 
 knn=Knn_Classifier(n_neighbors=2, X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test)
 train_acc,test_acc=knn.get_scores_with_best_params()
-
+model=knn.get_model()
+pickle.dump(model, open("knn.sav","wb"))
 
 
 
