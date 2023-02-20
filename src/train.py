@@ -40,6 +40,8 @@ data_df.info()
 
 description=data_df.describe()
 
+example=data_df.iloc[539,:]
+example.to_json()
 """
 
 The mean values  between columns have too much difference. For example area_mean is 654.889 and radius_mean is 14.1273
@@ -160,8 +162,8 @@ plt.show()
 #Need to feature scaling
 
 knn=Knn_Classifier(n_neighbors=2, X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test)
-train_acc,test_acc=knn.get_scores_with_best_params()
-model=knn.get_model()
+train_acc,test_acc,knn_model=knn.get_scores_with_best_params()
+model=knn_model
 pickle.dump(model, open("knn.sav","wb"))
 
 
@@ -206,6 +208,8 @@ X_reduced_nca=nca.transform(X_scaled)
 nca_data=pd.DataFrame(X_reduced_nca,columns=["p1","p2"])
 nca_data["target"]=y
 
+nca.transform(X_scaled[0].reshape(1,-1))
+
 sns.scatterplot(x="p1",y="p2",hue="target", data=nca_data)
 plt.title("NCA: P1 vs P2")
 
@@ -222,7 +226,10 @@ print(accuracy_score(y_test_nca, preds_test))#0.98 test accuracy score
 preds_train=model.predict(X_train_nca)
 print(accuracy_score(y_train_nca, preds_train))#0.98 test accuracy score
 
-
+X_test_nca[0]
+preds_test[0]
 #%%Save Best Model
 
 pickle.dump(model, open("best.sav",'wb'))
+
+

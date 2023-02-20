@@ -77,7 +77,7 @@ class Knn_Classifier:
         
         print(f"Train acc with best params :{train_acc} \n Test acc with best params {test_acc}")
         
-        return train_acc,test_acc
+        return train_acc,test_acc,knn_model
         
         
         

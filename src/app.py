@@ -6,19 +6,19 @@ import uvicorn
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.neighbors import KNeighborsClassifier
-from  sklearn.preprocessing import StandardScaler
+# from sklearn.neighbors import KNeighborsClassifier
+# from  sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.neighbors import NeighborhoodComponentsAnalysis,LocalOutlierFactor
 import pickle
 from input_data import input_data
-import json
+
 
 """start app"""
 app=FastAPI(title="Cancer Prediction App")
 
-"""acquire data"""
+"""acquire and transform  data"""
 data_df=pd.read_csv("../data.csv")
 data_df.drop(["Unnamed: 32",'id'],inplace=True,axis=1)
 
@@ -33,14 +33,14 @@ y=data_df["target"]
 
 cols=X.columns.tolist()
 
+"""train-test-splitting for accuracy evaluation"""
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=42)
 
 
+"""Model that we saved earlier"""
+model=pickle.load(open("knn.sav","rb"))
 
-
-# def preprocess_data(data):
-    
-    
-#     return X_reduced_nca
 
 
 
@@ -51,22 +51,23 @@ def home():
 @app.post("/predict")
 def predict(data:input_data):
   
-    scaler=StandardScaler()
-    X_scaled=scaler.fit_transform(X)
-    # nca=NeighborhoodComponentsAnalysis(n_components=2)
-    # nca.fit(X_scaled,y)
-    # print(data.to_dict())
-    # model=pickle.load(open("best.sav","rb"))
+ 
     data=pd.DataFrame(data.to_dict(),columns=X.columns.tolist(),index=[0])
    
     print(data)
-    # print(data.shape)
-    # print("Error is here")
-    # X_reduced_nca=nca.transform(data)
-    # print(X_reduced_nca.shape)
-    model=pickle.load(open("knn.sav","rb"))
+
+    
     prediction=model.predict(data)
-    return {"prediction":prediction}
+    return {"prediction":prediction.tolist()}
+
+@app.get("/getevaluationScores")
+def getEvaluationScores():
+    predictions_test=model.predict(X_test)
+    predictions_train=model.predict(X_train)
+    test_acc=accuracy_score(predictions_test,y_test)
+    train_acc=accuracy_score(predictions_train,y_train)
+    return {"test_accuracy":test_acc,"train_acc":train_acc}
+
         
 if __name__=="__main__":
      uvicorn.run(app,host="127.0.0.1",port=8000)
