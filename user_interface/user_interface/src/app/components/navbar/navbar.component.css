@@ -1,0 +1,15 @@
+.navbar {
+    background-color: aquamarine !important;
+    
+  }
+.navbar-nav .nav-item  {
+    font-size: 20px;
+  }
+
+.navbar-brand{
+    font-size:20px;
+}
+.navbar-nav .nav-item {
+    padding-right: 20px;
+    padding-left: 20px;
+  }

@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+
+//Navbar rengi için tema ayarı
+$primary: mat-palette($mat-indigo, 500);
+
+//Navbar rengi ve teması belirleme
+$theme: mat-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
