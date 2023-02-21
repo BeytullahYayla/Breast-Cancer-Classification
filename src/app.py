@@ -49,7 +49,7 @@ def home():
     return "Api is working as expected"
 
 @app.post("/predict")
-def predict(data:input_data):
+def predict_without_nca(data:input_data):
   
  
     data=pd.DataFrame(data.to_dict(),columns=X.columns.tolist(),index=[0])
