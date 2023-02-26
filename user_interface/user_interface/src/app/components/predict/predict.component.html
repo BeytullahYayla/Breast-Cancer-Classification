@@ -13,7 +13,7 @@
     padding: 10px 10px;
     background-color:aquamarine;
   ">
-  <form method="POST" action="/predict-breast-cancer">
+  <form [formGroup]="cancerFeatureForm">
     <div class="form-group">
       <label for="radius_mean" style="font-size: 17px"><b>Radius Mean</b></label>
       <input type="number" step="0.01" class="form-control" id="radius_mean" name="radius_mean" placeholder="Enter the value" style="font-weight: bold" required="">
@@ -131,7 +131,7 @@
         <input type="number" step="0.01" class="form-control" id="fractal_dimension_worst" name="fractal_dimension_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
+        <button (click)="predict" type="submit" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
           Predict
         </button>
       </div>

@@ -28,7 +28,9 @@
               "src/styles.css",
              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
+            "scripts": [
+              
+              "C:/Users/Beytullah/Documents/GitHub/Breast-Cancer-Classification/user_interface/user_interface/node_modules/jquery/dist/jquery.js",
             "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
