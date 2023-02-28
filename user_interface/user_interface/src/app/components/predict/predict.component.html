@@ -79,6 +79,10 @@
         <input type="number" step="0.01" class="form-control" id="compactness_se" name="compactness_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
+        <label for="concavity_se" style="font-size: 17px"><b>Concavity SE</b></label>
+        <input type="number" step="0.01" class="form-control" id="concavity_se" name="concavity_se" placeholder="Enter the value" style="font-weight: bold" required="">
+      </div>
+      <div class="form-group">
         <label for="concave_points_se" style="font-size: 17px"><b>Concave Points SE</b></label>
         <input type="number" step="0.01" class="form-control" id="concave_points_se" name="concave_points_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
@@ -131,7 +135,7 @@
         <input type="number" step="0.01" class="form-control" id="fractal_dimension_worst" name="fractal_dimension_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="d-flex justify-content-center">
-        <button (click)="predict" type="submit" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
+        <button (click)="predict()" type="button" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
           Predict
         </button>
       </div>

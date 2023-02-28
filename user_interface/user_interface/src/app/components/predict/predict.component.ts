@@ -75,21 +75,23 @@ export class PredictComponent {
 
   predict(){
     console.log("Basildi")
-    if(this.cancerFeatureForm.valid){
-
+    //if(this.cancerFeatureForm.valid){
+      console.log("gecerli")
       let cancerModel=Object.assign({},this.cancerFeatureForm.value)
       this.cancerPredictionService.predict(cancerModel).subscribe(response=>{
-        if(response.prediction.indexOf(0)==0){
-          console.log(0)
-          return "Malignant"
-        }
-        else{
-          console.log(1)
-          return "Benign"
-        }
-      })
-    }
+    //     if(response.prediction.includes(0)){
+    //       console.log(0)
+    //       return "Malignant"
+    //     }
+    //     else{
+    //       console.log(1)
+    //       return "Benign"
+    //     }
+    //   })
+    // }
+    console.log(response)
 
-  }
-
-}
+  })
+//}
+console.log("Gecersiz")
+  }}
