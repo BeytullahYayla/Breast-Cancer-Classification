@@ -1,6 +1,7 @@
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { Cancer } from './../../model/Cancer';
 import { CancerPredictionService } from './../../services/cancer-prediction.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './predict.component.html',
   styleUrls: ['./predict.component.css']
 })
-export class PredictComponent {
+export class PredictComponent implements OnInit {
 
   prediction:any
   cancerFeatureForm: FormGroup = new FormGroup({});
@@ -17,10 +18,11 @@ export class PredictComponent {
    *
    */
   constructor(private cancerPredictionService:CancerPredictionService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private toastrService:ToastrService
     ) {
       this.createPredictForm()
-    
+      
     
   }
   ngOnInit(): void {
@@ -74,24 +76,31 @@ export class PredictComponent {
 
 
   predict(){
-    console.log("Basildi")
-    //if(this.cancerFeatureForm.valid){
-      console.log("gecerli")
+    
+      
+     if (this.cancerFeatureForm.valid) {
       let cancerModel=Object.assign({},this.cancerFeatureForm.value)
+      console.log(cancerModel)
       this.cancerPredictionService.predict(cancerModel).subscribe(response=>{
-    //     if(response.prediction.includes(0)){
-    //       console.log(0)
-    //       return "Malignant"
-    //     }
-    //     else{
-    //       console.log(1)
-    //       return "Benign"
-    //     }
-    //   })
-    // }
-    console.log(response)
+        if(response.prediction.includes(0)){
+          console.log("Malignant")
+          return 0
+        }
+        else{
+          console.log("Benign")
+          return 1
+        }
+      })
+      
+     }
+     else{
+      this.toastrService.error("Form is not valid!")
+     }
+     
+    
+   
 
-  })
-//}
+  }
+}
 console.log("Gecersiz")
-  }}
+

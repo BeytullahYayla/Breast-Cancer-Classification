@@ -15,8 +15,6 @@ import pickle
 from input_data import input_data
 from fastapi.middleware.cors import CORSMiddleware
 
-
-
 """start app"""
 app=FastAPI(title="Cancer Prediction App")
 
@@ -67,7 +65,6 @@ def home():
 @app.post("/predict")
 def predict_without_nca(data:input_data):
   
- 
     data=pd.DataFrame(data.to_dict(),columns=X.columns.tolist(),index=[0])
    
     print(data)

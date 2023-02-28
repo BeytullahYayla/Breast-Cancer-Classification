@@ -16,123 +16,123 @@
   <form [formGroup]="cancerFeatureForm">
     <div class="form-group">
       <label for="radius_mean" style="font-size: 17px"><b>Radius Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="radius_mean" name="radius_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="radius_mean" step="0.01" class="form-control" id="radius_mean" name="radius_mean" placeholder="Enter the value" style="font-weight: bold">
     </div>
     <div class="form-group">
       <label for="texture_mean" style="font-size: 17px"><b>Texture Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="texture_mean" name="texture_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="texture_mean" step="0.01" class="form-control" id="texture_mean" name="texture_mean" placeholder="Enter the value" style="font-weight: bold">
     </div>
     <div class="form-group">
       <label for="perimeter_mean" style="font-size: 17px"><b>Perimeter Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="perimeter_mean" name="perimeter_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="perimeter_mean" step="0.01" class="form-control" id="perimeter_mean" name="perimeter_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
       <label for="area_mean" style="font-size: 17px"><b>Area Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="area_mean" name="area_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="area_mean" step="0.01" class="form-control" id="area_mean" name="area_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
       <label for="smoothness_mean" style="font-size: 17px"><b>Smoothness Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="smoothness_mean" name="smoothness_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="smoothness_mean" step="0.01" class="form-control" id="smoothness_mean" name="smoothness_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
       <label for="compactness_mean" style="font-size: 17px"><b>Compactness Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="compactness_mean" name="compactness_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="compactness_mean" step="0.01" class="form-control" id="compactness_mean" name="compactness_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
       <label for="concavity_mean" style="font-size: 17px"><b>Concavity Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="concavity_mean" name="concavity_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="concavity_mean" step="0.01" class="form-control" id="concavity_mean" name="concavity_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
       <label for="concave_points_mean" style="font-size: 17px"><b>Concave Points Mean</b></label>
-      <input type="number" step="0.01" class="form-control" id="concave_points_mean" name="concave_points_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+      <input type="number" formControlName="concave_points_mean" step="0.01" class="form-control" id="concave_points_mean" name="concave_points_mean" placeholder="Enter the value" style="font-weight: bold" required="">
     </div>
     <div class="form-group">
         <label for="symmetry_mean" style="font-size: 17px"><b>Symmetry Mean</b></label>
-        <input type="number" step="0.01" class="form-control" id="symmetry_mean" name="symmetry_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="symmetry_mean" step="0.01" class="form-control" id="symmetry_mean" name="symmetry_mean" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="fractal_dimension_mean" style="font-size: 17px"><b>Fractal Dimension Mean</b></label>
-        <input type="number" step="0.01" class="form-control" id="fractal_dimension_mean" name="fractal_dimension_mean" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="fractal_dimension_mean" step="0.01" class="form-control" id="fractal_dimension_mean" name="fractal_dimension_mean" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="radius_se" style="font-size: 17px"><b>Radius SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="radius_se" name="radius_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="radius_se" step="0.01" class="form-control" id="radius_se" name="radius_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="texture_se" style="font-size: 17px"><b>Texture SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="texture_se" name="texture_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="texture_se" step="0.01" class="form-control" id="texture_se" name="texture_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="perimeter_se" style="font-size: 17px"><b>Perimeter SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="perimeter_se" name="perimeter_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="perimeter_se" step="0.01" class="form-control" id="perimeter_se" name="perimeter_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="area_se" style="font-size: 17px"><b>Area SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="area_se" name="area_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="area_se" step="0.01" class="form-control" id="area_se" name="area_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="smoothness_se" style="font-size: 17px"><b>Smoothness SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="smoothness_se" name="smoothness_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="smoothness_se" step="0.01" class="form-control" id="smoothness_se" name="smoothness_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="compactness_se" style="font-size: 17px"><b>Compactness SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="compactness_se" name="compactness_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="compactness_se" step="0.01" class="form-control" id="compactness_se" name="compactness_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="concavity_se" style="font-size: 17px"><b>Concavity SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="concavity_se" name="concavity_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="concavity_se" step="0.01" class="form-control" id="concavity_se" name="concavity_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="concave_points_se" style="font-size: 17px"><b>Concave Points SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="concave_points_se" name="concave_points_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="concave_points_se" step="0.01" class="form-control" id="concave_points_se" name="concave_points_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="symmetry_se" style="font-size: 17px"><b>Symmetry SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="symmetry_se" name="symmetry_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="symmetry_se" step="0.01" class="form-control" id="symmetry_se" name="symmetry_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="fractal_dimension_se" style="font-size: 17px"><b>Fractal Dimension SE</b></label>
-        <input type="number" step="0.01" class="form-control" id="fractal_dimension_se" name="fractal_dimension_se" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="fractal_dimension_se" step="0.01" class="form-control" id="fractal_dimension_se" name="fractal_dimension_se" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="radius_worst" style="font-size: 17px"><b>Radius Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="radius_worst" name="radius_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="radius_worst" step="0.01" class="form-control" id="radius_worst" name="radius_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="texture_worst" style="font-size: 17px"><b>Texture Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="texture_worst" name="texture_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="texture_worst" step="0.01" class="form-control" id="texture_worst" name="texture_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="perimeter_worst" style="font-size: 17px"><b>Perimeter Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="perimeter_worst" name="perimeter_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="perimeter_worst" step="0.01" class="form-control" id="perimeter_worst" name="perimeter_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="area_worst" style="font-size: 17px"><b>Area Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="area_worst" name="area_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="area_worst" step="0.01" class="form-control" id="area_worst" name="area_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="smoothness_worst" style="font-size: 17px"><b>Smoothness Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="smoothness_worst" name="smoothness_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="smoothness_worst" step="0.01" class="form-control" id="smoothness_worst" name="smoothness_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="compactness_worst" style="font-size: 17px"><b>Compactness Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="compactness_worst" name="compactness_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="compactness_worst" step="0.01" class="form-control" id="compactness_worst" name="compactness_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="concavity_worst" style="font-size: 17px"><b>Concavity Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="concavity_worst" name="concavity_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="concavity_worst" step="0.01" class="form-control" id="concavity_worst" name="concavity_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
-        <label for="concave_point_worst" style="font-size: 17px"><b>Concave Point Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="concave_point_worst" name="concave_point_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <label for="concave_points_worst" style="font-size: 17px"><b>Concave Point Worst</b></label>
+        <input type="number" formControlName="concave_points_worst" step="0.01" class="form-control" id="concave_points_worst" name="concave_points_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="symmetry_worst" style="font-size: 17px"><b>Symmetry Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="symmetry_worst" name="symmetry_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="symmetry_worst" step="0.01" class="form-control" id="symmetry_worst" name="symmetry_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="form-group">
         <label for="fractal_dimension_worst" style="font-size: 17px"><b>Fractal Dimension Worst</b></label>
-        <input type="number" step="0.01" class="form-control" id="fractal_dimension_worst" name="fractal_dimension_worst" placeholder="Enter the value" style="font-weight: bold" required="">
+        <input type="number" formControlName="fractal_dimension_worst" step="0.01" class="form-control" id="fractal_dimension_worst" name="fractal_dimension_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="d-flex justify-content-center">
         <button (click)="predict()" type="button" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
