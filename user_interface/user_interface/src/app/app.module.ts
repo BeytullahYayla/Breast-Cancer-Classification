@@ -13,13 +13,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';import {trigger,state,style,animate,transition}from '@angular/animations';
+import { MalignantComponent } from './malignant/malignant.component';
+import { BenignComponent } from './benign/benign.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     PredictComponent,
-    FooterComponent
+    FooterComponent,
+    MalignantComponent,
+    BenignComponent
   ],
   imports: [
     BrowserModule,
