@@ -14,7 +14,8 @@ from sklearn.neighbors import NeighborhoodComponentsAnalysis,LocalOutlierFactor
 import pickle
 from input_data import input_data
 from fastapi.middleware.cors import CORSMiddleware
-
+from PreprocessingPipeline import ColumnDropper,TargetColumnDropper,ColumnRenamer,CategoricalDataEncoder
+from sklearn.pipeline import Pipeline
 """start app"""
 app=FastAPI(title="Cancer Prediction App")
 
@@ -32,18 +33,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+pipe_X=Pipeline([
+    ("column_dropper",ColumnDropper()),
+    ("column_renamer",ColumnRenamer()),
+    ("categorical_data_encoder",CategoricalDataEncoder()),
+    ("target_data_dropper",TargetColumnDropper())
+])
+pipe_y=Pipeline([
+    ("column_dropper",ColumnDropper()),
+    ("column_renamer",ColumnRenamer()),
+    ("categorical_data_encoder",CategoricalDataEncoder()),
+])
+
+
 """acquire and transform  data"""
 data_df=pd.read_csv("../data.csv")
-data_df.drop(["Unnamed: 32",'id'],inplace=True,axis=1)
 
-data_df=data_df.rename(columns={"diagnosis":"target","concave points_worst":"concave_points_worst","concave points_mean":"concave_points_mean",
-                                "concave points_se":"concave_points_se"
+# data_df.drop(["Unnamed: 32",'id'],inplace=True,axis=1)
+
+# data_df=data_df.rename(columns={"diagnosis":"target","concave points_worst":"concave_points_worst","concave points_mean":"concave_points_mean",
+#                                 "concave points_se":"concave_points_se"
                                 
-                                })
-data_df["target"]=[1 if i.strip()=="M" else 0 for i in data_df.target]
+#                                 })
+# data_df["target"]=[1 if i.strip()=="M" else 0 for i in data_df.target]
 
-X=data_df.drop(["target"],axis=1)
-y=data_df["target"]
+# X=data_df.drop(["target"],axis=1)
+X=pipe_X.fit_transform(data_df)
+print(X)
+y=pipe_y.fit_transform(data_df)["target"]
 
 cols=X.columns.tolist()
 

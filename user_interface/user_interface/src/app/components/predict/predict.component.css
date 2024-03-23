@@ -1,0 +1,47 @@
+/* styles.css */
+
+/* Navbar stil ayarları */
+/* style.css */
+
+
+  /* style.css */
+
+
+.navbar {
+    background-color: #343a40 !important;
+  }
+  
+  .navbar-brand {
+    color: #fff;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  /* Form stil ayarları */
+  .card {
+    border: none;
+    opacity: 0.7;
+  }
+
+  
+  .card.bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .card h2 {
+    color: #000;
+  }
+  
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  
+  .btn-info:hover {
+    background-color: #117a8b;
+    border-color: #117a8b;
+  }
+  /* style.css */
+
