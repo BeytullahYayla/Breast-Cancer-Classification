@@ -1,18 +1,9 @@
-<div style="background-color: cadetblue;">
-    <br>
-    <br>
-    <h2 style="text-align: center; margin: 0px; color: black;">Find out the cancer type: Malignant or Benign
-    </h2>
-    <br>
-<div style="
-    width: 600px;
-    height: 120rem;
-    margin: 0px auto;
-    color: black;
-    border-radius: 25px;
-    padding: 10px 10px;
-    background-color:aquamarine;
-  ">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card bg-light p-4">
+        <h2 class="text-center mb-4">Find out the cancer type: Malignant or Benign</h2>
   <form [formGroup]="cancerFeatureForm">
     <div class="form-group">
       <label for="radius_mean" style="font-size: 17px"><b>Radius Mean</b></label>
@@ -135,11 +126,12 @@
         <input type="number" formControlName="fractal_dimension_worst" step="0.01" class="form-control" id="fractal_dimension_worst" name="fractal_dimension_worst" placeholder="Enter the value" style="font-weight: bold" required="">
       </div>
       <div class="d-flex justify-content-center">
-        <button (click)="predict()" type="button" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
+        <button (click)="predict()"  type="button" class="btn btn-info" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
           Predict
         </button>
       </div>
       </form>
-  
     </div>
+  </div>
+</div>
 </div>

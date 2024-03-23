@@ -3,7 +3,7 @@ import { Cancer } from './../../model/Cancer';
 import { CancerPredictionService } from './../../services/cancer-prediction.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-predict',
   templateUrl: './predict.component.html',
@@ -19,7 +19,8 @@ export class PredictComponent implements OnInit {
    */
   constructor(private cancerPredictionService:CancerPredictionService,
     private formBuilder:FormBuilder,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private router:Router
     ) {
       this.createPredictForm()
       
@@ -83,11 +84,16 @@ export class PredictComponent implements OnInit {
       console.log(cancerModel)
       this.cancerPredictionService.predict(cancerModel).subscribe(response=>{
         if(response.prediction.includes(0)){
-          console.log("Malignant")
+          this.toastrService.success("Prediction is successfully completed!")
+          this.router.navigate(["/malignant"])
+          console.log("malignant")
+          
           return 0
         }
         else{
           console.log("Benign")
+          this.toastrService.success("Prediction is successfully completed!")
+          this.router.navigate(["/benign"])
           return 1
         }
       })

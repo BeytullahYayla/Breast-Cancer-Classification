@@ -1,0 +1,4 @@
+body {    background-image: url('bg2.jpg'); /* Arka plan resminin dosya yolunu belirtin */
+    background-size: cover; /* Resmi kaplayacak şekilde boyutlandırır */
+    background-position: center; /* Resmi sayfanın ortasına yerleştirir */
+  }
