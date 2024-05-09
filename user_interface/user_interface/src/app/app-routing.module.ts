@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-{path:"",pathMatch:'full',component:HomeComponent},
-{path:"home",pathMatch:"full",component:HomeComponent},
+{path:"",pathMatch:'full',component:PredictComponent},
+{path:"home",pathMatch:"full",component:PredictComponent},
 {path:"home/predict",pathMatch:"full",component:PredictComponent},
 {path:"predict",component:PredictComponent},
 {path:"malignant",component:MalignantComponent},

@@ -21,7 +21,7 @@ class ColumnRenamer(BaseEstimator,TransformerMixin):
                                 "concave points_se":"concave_points_se"
                                 
                                 })
-
+    
 class CategoricalDataEncoder(BaseEstimator,TransformerMixin):
     def fit(self,X,y=None):
         return self

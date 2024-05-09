@@ -34,39 +34,16 @@ export class PredictComponent implements OnInit {
 
   createPredictForm(){
     this.cancerFeatureForm=this.formBuilder.group({
-     
-      radius_mean:["",Validators.required],
-      texture_mean:["",Validators.required],
-      perimeter_mean:["",Validators.required],
-      area_mean:["",Validators.required],
-      smoothness_mean:["",Validators.required],
-      compactness_mean:["",Validators.required],
-      concavity_mean:["",Validators.required],
-      concave_points_mean:["",Validators.required],
-      symmetry_mean:["",Validators.required],
-      fractal_dimension_mean:["",Validators.required],
-      radius_se:["",Validators.required],
-      texture_se:["",Validators.required],
-      perimeter_se:["",Validators.required],
-      area_se:["",Validators.required],
-      smoothness_se:["",Validators.required],
-      compactness_se:["",Validators.required],
-      concavity_se:["",Validators.required],
-      concave_points_se:["",Validators.required],
-      symmetry_se:["",Validators.required],
-      fractal_dimension_se:["",Validators.required],
       radius_worst:["",Validators.required],
-      texture_worst:["",Validators.required],
       perimeter_worst:["",Validators.required],
       area_worst:["",Validators.required],
-      smoothness_worst:["",Validators.required],
-      compactness_worst:["",Validators.required],
+      perimeter_mean:["",Validators.required],
+      radius_mean:["",Validators.required],
+      area_mean:["",Validators.required],
       concavity_worst:["",Validators.required],
+      concavity_mean:["",Validators.required],
+      concave_points_mean:["",Validators.required],
       concave_points_worst:["",Validators.required],
-      symmetry_worst:["",Validators.required],
-      fractal_dimension_worst:["",Validators.required]
-     
-
     })
   }
 
