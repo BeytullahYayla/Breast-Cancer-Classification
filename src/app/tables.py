@@ -17,6 +17,8 @@ class Patient(Base):
     gender = Column(String(255),nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     
+    records=relationship("Record",back_populates="patients",cascade="all, delete")
+    
 class Record(Base):
     
     __tablename__ = "records"
@@ -35,4 +37,6 @@ class Record(Base):
     concave_points_worst=Column(Double(),nullable=False)
     prediction=Column(String(255),nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow())
+    
+    patients=relationship("Patient",back_populates="records")
     

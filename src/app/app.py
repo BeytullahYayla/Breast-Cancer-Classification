@@ -12,14 +12,14 @@ from sklearn.neighbors import NeighborhoodComponentsAnalysis,LocalOutlierFactor
 import pickle
 from input_data import input_data
 from fastapi.middleware.cors import CORSMiddleware
-from PreprocessingPipeline import ColumnDropper,TargetColumnDropper,ColumnRenamer,CategoricalDataEncoder
+from preprocessing_pipeline import ColumnDropper,TargetColumnDropper,ColumnRenamer,CategoricalDataEncoder
 from sklearn.pipeline import Pipeline
 from connect_database import engine, SessionLocal
 from fastapi import FastAPI, HTTPException, Depends, status, Query, UploadFile, File, encoders
 from pydantic import BaseModel
 from typing import Annotated, Optional
 import tables
-from models import PatientCreateRequest,PatientGetResponse,PatientUpdateRequest,RecordCreateRequest,RecordCreateResponse,RecordGetResponse
+from models import Patient,Record,PatientCreateRequest,PatientGetResponse,PatientUpdateRequest,RecordCreateRequest,RecordCreateResponse,RecordGetResponse
 from sqlalchemy.orm import Session
 from uuid import UUID, uuid4
 from sqlalchemy import create_engine, Column, String, select, desc
@@ -32,6 +32,7 @@ import secrets
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy import func
+from typing import List
 
 
 """start app"""
@@ -147,8 +148,29 @@ def delete_patient_by_id(db: Session, patient_id: str):
         db.commit()
         return True  # Başarıyla silindi
     return False  # Hasta bulunamadı
-
-
+async def update_existing_patient(patient_id: int, patient_update: PatientUpdateRequest, db: db_dependency):
+    # Veritabanında mevcut hastayı güncelle
+    
+    # Veritabanından hasta bilgilerini al
+    patient = get_patient_by_id(db, patient_id)
+    
+    if not patient:
+        raise HTTPException(status_code=404, detail="Hasta bulunamadı.")
+    
+    # Güncellenecek alanları güncelle
+    patient.first_name = patient_update.first_name
+    patient.middle_name = patient_update.middle_name
+    patient.last_name = patient_update.last_name
+    patient.age = patient_update.age
+    patient.gender = patient_update.gender
+    
+    # Veritabanına güncellenmiş hasta bilgilerini kaydet
+    db.commit()
+    db.refresh(patient)
+    
+    return patient
+def get_patients(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(tables.Patient).offset(skip).limit(limit).all()
 @app.get("/")
 def home():
     return "Api is working as expected"
@@ -182,34 +204,19 @@ async def update_patient(db: db_dependency, patient_update: PatientUpdateRequest
     return updated_patient
 
 
-async def update_existing_patient(patient_id: int, patient_update: PatientUpdateRequest, db: db_dependency):
-    # Veritabanında mevcut hastayı güncelle
-    
-    # Veritabanından hasta bilgilerini al
-    patient = get_patient_by_id(db, patient_id)
-    
-    if not patient:
-        raise HTTPException(status_code=404, detail="Hasta bulunamadı.")
-    
-    # Güncellenecek alanları güncelle
-    patient.first_name = patient_update.first_name
-    patient.middle_name = patient_update.middle_name
-    patient.last_name = patient_update.last_name
-    patient.age = patient_update.age
-    patient.gender = patient_update.gender
-    
-    # Veritabanına güncellenmiş hasta bilgilerini kaydet
-    db.commit()
-    db.refresh(patient)
-    
-    return patient
+
 @app.delete("/patients/{patient_id}", status_code=204)
 def delete_patient(patient_id: str,db:db_dependency):
     success = delete_patient_by_id(db, patient_id)
     if not success:
         raise HTTPException(status_code=404, detail="Hasta bulunamadı")
     return {"detail": "Hasta başarıyla silindi"}
-  
+
+@app.get("/patients/",response_model=List[Patient])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_database_connection)):
+    patients = get_patients(db, skip=skip, limit=limit)
+    return patients
+
 @app.post("/savePrediction", status_code=status.HTTP_200_OK)
 async def save_prediction(db: db_dependency, patient_name: str, data: input_data):
     data = pd.DataFrame(data.to_dict(), columns=X.columns.tolist(), index=[0])
