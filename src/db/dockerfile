@@ -1,0 +1,5 @@
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=Beytullah.123 
+
+COPY ./breast_cancer_db.sql /docker-entrypoint-initdb.d/

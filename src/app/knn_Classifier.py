@@ -27,9 +27,6 @@ class Knn_Classifier:
         
     def get_test_acc(self):
        
-        
-        
-        
         y_pred=self.model.predict(self.X_test)
     
         test_accuracy=accuracy_score(self.y_test, y_pred)

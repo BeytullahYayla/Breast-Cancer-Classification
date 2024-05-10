@@ -2,7 +2,13 @@ fastapi==0.111.0
 matplotlib==3.8.4
 numpy==1.26.4
 pandas==2.2.2
+passlib==1.7.4
+Pillow==10.3.0
 pydantic==2.7.1
+python-dotenv==1.0.1
+PyMySQL==1.1.0
 scikit_learn==1.4.2
 seaborn==0.13.2
+SQLAlchemy==2.0.30
 uvicorn==0.29.0
+cryptography
