@@ -1,0 +1,20 @@
+# İlk aşama: Node.js imajını kullanarak uygulamayı derle
+FROM node:latest as build
+
+# Çalışma dizinini /usr/local/app olarak ayarla
+WORKDIR /usr/local/app
+
+# Mevcut dizindeki tüm dosyaları Docker içindeki /usr/local/app dizinine kopyala
+COPY ./ /usr/local/app
+
+# Uygulama bağımlılıklarını yükle (package.json ve package-lock.json dosyalarını kullanarak)
+RUN npm install
+
+# Uygulamayı derle (örneğin, Angular uygulaması için ng build)
+RUN npm run build
+
+# İkinci aşama: Nginx imajını temel alarak uygulamayı sun
+FROM nginx:latest
+
+# İlk aşamadan (build aşamasından) elde edilen derleme sonuçlarını Nginx'in çalıştığı /usr/share/nginx/html dizinine kopyala
+COPY --from=build /usr/local/app/dist/ /usr/share/nginx/html

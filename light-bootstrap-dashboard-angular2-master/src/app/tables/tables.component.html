@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Patients Table</h4>
+            <p class="category">List of patients with details</p>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Result</th>
+                  <th>Actions</th> <!-- Add Actions column -->
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Loop through patients array and display each patient's information -->
+                <tr *ngFor="let patient of patients">
+                  <td>{{ patient.first_name }}</td>
+                  <td>{{ patient.last_name }}</td>
+                  <td>{{ patient.age }}</td>
+                  <td>{{ patient.gender }}</td>
+                  <td>{{ patient.records[0]?.prediction || '-' }}</td> <!-- Display first prediction result or '-' if not available -->
+                  <td>
+                  
+          
+                    <button class="btn btn-danger btn-sm" (click)="onDeletePatient(patient.id)">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

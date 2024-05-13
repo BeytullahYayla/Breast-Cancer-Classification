@@ -1,32 +1,28 @@
 version: '3.9'
 services:
+  # Web servisi tanımı
+  web:
+    build: .
+    command: sh -c "uvicorn app:app --reload --port=8000 --host=0.0.0.0"
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - backend
 
-
-
-      web:
-            build: .
-            command: sh -c "uvicorn app:app --reload --port=8000 --host=0.0.0.0"
-            ports:
-                  - 8000:8000
-            depends_on:
-                  - db
-            networks:
-                  - backend
-      db:
-            build: ./db/
-            image: mysql:latest
-            environment:
-                  MYSQL_DATABASE: breast_cancer_db
-                  MYSQL_ROOT_PASSWORD: Beytullah.123
-                 
-               
-            networks:
-                  - backend
-
-   
-      
+  # Veritabanı servisi tanımı
+  db:
+    build: ./db/
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: breast_cancer_db
+      MYSQL_ROOT_PASSWORD: Beytullah.123 
+    networks:
+      - backend
 
 networks:
-            backend:
-                  driver: bridge
-                  name: backend
+  # Arka planda kullanılacak ağ tanımı
+  backend:
+    driver: bridge
+    name: backend

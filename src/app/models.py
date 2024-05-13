@@ -43,6 +43,7 @@ class RecordBase(BaseModel):
     concave_points_mean:float
     concave_points_worst:float
     created_at:datetime
+    prediction:str
     
 class Record(RecordBase):
     id:UUID

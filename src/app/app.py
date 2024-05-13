@@ -42,7 +42,8 @@ app=FastAPI(title="Cancer Prediction App")
 origins = [
     
     "http://localhost:4200",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    "http://localhost:8080"
 ]
 
 
@@ -50,7 +51,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
 

@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Hasta Ekle</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="patientForm">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="first_name" formControlName="first_name">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="middle_name">Middle Name</label>
+            <input type="text" class="form-control" id="middle_name" formControlName="middle_name">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="last_name" formControlName="last_name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" class="form-control" id="age" formControlName="age">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" formControlName="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info btn-fill pull-right" [disabled]="!patientForm.valid">Add Patient</button>
+      <div class="clearfix"></div>
+    </form>
+  </div>
+  

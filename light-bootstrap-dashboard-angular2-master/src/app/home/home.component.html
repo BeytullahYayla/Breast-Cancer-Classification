@@ -1,0 +1,77 @@
+<div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Kanser Türünü Belirle: İyi Huylu (Benign) veya Kötü Huylu (Malignant) </h4>
+                    </div>
+                
+                <div class="content">
+                  <form [formGroup]="patientInfoForm">
+                    <div class="form-group">
+                      <label for="radius_worst">Hasta İsmi (Patient Name) </label>
+                      <input type="text" formControlName="patient_name" step="0.01" class="form-control" id="patient_name" placeholder="İsim Giriniz" required>
+                    </div>
+                  </form>
+
+                    <form [formGroup]="cancerFeatureForm">
+                        
+                        <div class="form-group">
+                          <label for="radius_worst">En Büyük Yarıçap (Radius Worst)</label>
+                          <input type="number" formControlName="radius_worst" step="0.01" class="form-control" id="radius_worst" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="perimeter_worst">En Büyük Çevre (Perimeter Worst)</label>
+                          <input type="number" formControlName="perimeter_worst" step="0.01" class="form-control" id="perimeter_worst" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="area_worst">En Büyük Alan (Area Worst)</label>
+                          <input type="number" formControlName="area_worst" step="0.01" class="form-control" id="area_worst" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="perimeter_mean">Ortalama Çevre (Perimeter Mean)</label>
+                          <input type="number" formControlName="perimeter_mean" step="0.01" class="form-control" id="perimeter_mean" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="radius_mean">Ortalama Yarıçap (Radius Mean)</label>
+                          <input type="number" formControlName="radius_mean" step="0.01" class="form-control" id="radius_mean" placeholder="Değeri Giriniz">
+                        </div>
+                        <div class="form-group">
+                          <label for="area_mean">Ortalama Alan (Area Mean)</label>
+                          <input type="number" formControlName="area_mean" step="0.01" class="form-control" id="area_mean" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="concavity_worst">En Büyük Çukurluk (Concavity Worst)</label>
+                          <input type="number" formControlName="concavity_worst" step="0.01" class="form-control" id="concavity_worst" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="concavity_mean">Ortalama Çukurluk (Concavity Mean)</label>
+                          <input type="number" formControlName="concavity_mean" step="0.01" class="form-control" id="concavity_mean" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="concave_points_mean">Ortalama Konkav Noktalar (Concave Points Mean)</label>
+                          <input type="number" formControlName="concave_points_mean" step="0.01" class="form-control" id="concave_points_mean" placeholder="Değeri Giriniz" required>
+                        </div> 
+                        <div class="form-group">
+                          <label for="concave_points_worst">En Büyük Konkav Nokta (Concave Point Worst)</label>
+                          <input type="number" formControlName="concave_points_worst" step="0.01" class="form-control" id="concave_points_worst" placeholder="Değeri Giriniz" required>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                          <button (click)="predict()" type="button" class="btn btn-red-white">Tahmin Et</button>
+                        </div>
+                      </form>
+              
+
+
+                </div>
+            </div>
+                
+          
+
+            </div>
+        </div>
+    </div>
+</div>
+                
+          

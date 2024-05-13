@@ -1,5 +1,9 @@
+# 1. Resmi MySQL imajını temel al
 FROM mysql:latest
 
-ENV MYSQL_ROOT_PASSWORD=Beytullah.123 
+# 2. Çevre değişkeni (environment variable) ayarla: MySQL root kullanıcısı için parolayı belirle
+ENV MYSQL_ROOT_PASSWORD=Beytullah.123
 
+# 3. breast_cancer_db.sql dosyasını Docker imajına kopyala
+#    Bu dosya /docker-entrypoint-initdb.d/ dizinine kopyalanacak ve MySQL başlatıldığında otomatik olarak çalıştırılacak
 COPY ./breast_cancer_db.sql /docker-entrypoint-initdb.d/
